@@ -33,7 +33,7 @@ class VirusTree {
             return;
         }
 
-        System.out.printf("%s ", node.getData()); // output node data
+        System.out.printf("%s ", node.getData());// output node data
         preorderHelper(node.left); // traverse left subtree
         preorderHelper(node.right); // traverse right subtree
     }
@@ -54,6 +54,15 @@ class VirusTree {
         return isBST(node.left, min, node.getData()) && 
                isBST(node.right, node.getData(), max);
     }
+
+    public void deleteBST() {
+        if (checkBST()) {
+            root = null;
+            System.out.println("BST telah dihapus.");
+        } else {
+            System.out.println("Pohon ini bukan BST, penghapusan dilewati.");
+        }
+    }
 }
 
 class Main {
@@ -61,5 +70,7 @@ class Main {
         VirusTree tree = new VirusTree();
         tree.preorderTraversal();// pre-order untuk mengecek bentuk pohon
         System.out.println(tree.checkBST());// hasil true atau false
+        tree.deleteBST(); // Memanggil metode untuk menghapus BST jika itu adalah BST
+        tree.preorderTraversal(); // Mengecek apakah pohon telah dihapus
     }
 }
